@@ -1,0 +1,6 @@
+[1]. How will you insert into a table called A with columns: entity_name,filter,mdm_filter,status,
+priority,date_field,auto_extract,field_name,filter_description?
+[Ans]:
+INSERT INTO A(entity_name,filter,mdm_filter,status,
+priority,date_field,auto_extract,field_name,filter_description)
+VALUES ('summary','dob',1,1,28,1,0,'summary.dob','DOB');
