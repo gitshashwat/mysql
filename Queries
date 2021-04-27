@@ -4,3 +4,7 @@ priority,date_field,auto_extract,field_name,filter_description?
 INSERT INTO A(entity_name,filter,mdm_filter,status,
 priority,date_field,auto_extract,field_name,filter_description)
 VALUES ('summary','dob',1,1,28,1,0,'summary.dob','DOB');
+
+[2]: Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer.
+[Ans]:
+SELECT DISTINCT CITY FROM STATION WHERE ID % 2 = 0;
