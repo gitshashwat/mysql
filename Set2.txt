@@ -1,0 +1,7 @@
+1. Find the manhattan distance between two points in a plane. Suppose column 1's and 2's maximum is one point and column 1's and 2's minimum is another. Round off to 4.
+Ans:
+
+Manhatten distance: |x1 - x2| + |y1 - y2|
+select round(abs(min(col1)-max(col1))+abs(min(col2)-max(col2)),4) from table_name;
+
+2. 
