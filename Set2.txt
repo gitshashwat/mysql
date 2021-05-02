@@ -4,4 +4,60 @@ Ans:
 Manhatten distance: |x1 - x2| + |y1 - y2|
 select round(abs(min(col1)-max(col1))+abs(min(col2)-max(col2)),4) from table_name;
 
-2. 
+2. Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. Output one of the following statements for each record in the table:
+
+Equilateral: It's a triangle with 3 sides of equal length.
+Isosceles: It's a triangle with2  sides of equal length.
+Scalene: It's a triangle with 3  sides of differing lengths.
+Not A Triangle: The given values of A, B, and C don't form a triangle.
+
+Sample Output
+
+Isosceles
+Equilateral
+Scalene
+Not A Triangle
+
+Ans: Select CASE WHEN A+B<=C OR A+C<=B OR B+C<=A THEN "Not a Triangle"
+ELSE
+CASE 
+WHEN A=B AND B=C THEN "EQUILATERAL"
+WHEN A=B OR A=C OR B=C THEN "ISOSCELES"
+ELSE "SCALENE"
+END
+END
+from TRIANGLES;
+
+3. 
+i) Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
+ii) Query the number of ocurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascending order, and output them in the following format:
+There are a total of [occupation_count] [occupation]s.
+
+Ans: SELECT CONCAT(NAME,'(', SUBSTR(OCCUPATION,1,1) ,')')  FROM OCCUPATIONS order by name;
+SELECT CONCAT('There are a total of ',count(occupation), ' ',lower(occupation),'s.')  FROM OCCUPATIONS group by occupation order by count(occupation);
+
+
+4. Query a count of the number of cities in CITY having a Population larger than 100000.
+Ans: select count(name) from CITY where population>100000;
+
+5. Query the total population of all cities in CITY where District is California.
+Ans: select sum(POPULATION) from CITY where district = 'California';
+
+6. Query the average population of all cities in CITY where District is California.
+Ans: select avg(POPULATION) from CITY where district = 'California';
+
+7.Query the average population for all cities in CITY, rounded down to the nearest integer.
+Ans: select ROUND(avg(POPULATION)) from CITY;
+
+8. Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+Ans: select sum(x.population) from city x left join country y on x.CountryCode = y.Code where continent = 'Asia';
+
+9. Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than 38.7880  and less than 137.2345 . Truncate your answer to 4  decimal places.
+Ans: select round(sum(lat_n),4) from station where lat_n between (38.7881) and 137.2344;
+
+10: Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345  . Truncate your answer to 4 decimal places.
+Ans: select round(max(lat_n),4) from station where lat_n <137.2345;
+
+
