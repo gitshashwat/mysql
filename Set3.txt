@@ -5,4 +5,18 @@ select round(long_W,4) from station where
 lat_n = (select max(lat_n) from station where
 lat_n<137.2345) ;
 
-2. 
+2. Consider P1 and P2 to be two points on a 2D plane where  are the respective minimum and maximum values of Northern Latitude (LAT_N)
+Query the Euclidean Distance between points  and format your answer to display 4  decimal digits.
+Ans: select ROUND((
+    SQRT(
+        POWER((
+            min(lat_n)-max(lat_n)
+            ),2)
+        +
+        POWER((
+            min(long_w)-max(long_w)
+            ),2)
+        )
+        ),4) from station;
+        
+3.
