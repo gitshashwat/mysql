@@ -19,4 +19,12 @@ Ans: select ROUND((
         )
         ),4) from station;
         
-3.
+3. Calculate the average by removing zeros from salary: ex- 3402 becomes 342 or 22100 becomes 221.
+Ans: select avg(replace(salary,"0",""))) from table
+
+4. We define an employee's total earnings to be their monthly  worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings 
+Link: https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFullScreen=true
+Ans: select (salary*months) as earnings, count(*) as count from Employee group by (salary*months) order by 1 desc limit 1;
+
+5. 
+
