@@ -26,5 +26,40 @@ Ans: select avg(replace(salary,"0",""))) from table
 Link: https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFullScreen=true
 Ans: select (salary*months) as earnings, count(*) as count from Employee group by (salary*months) order by 1 desc limit 1;
 
-5. 
+5. https://www.hackerrank.com/challenges/placements/problem?isFullScreen=true
+Ans:
 
+with x1 as (select b.ID,a.name,b.salary from students a join packages b on a.ID=B.ID),
+
+x2 as (select a.ID, a.Friend_ID,b.salary as Friend_sal from Friends a join Packages b on a.Friend_ID = b.ID)
+
+select x1.name from x1 join x2 on x1.ID=x2.ID where x1.salary<x2.Friend_sal order by x2.Friend_sal;
+
+6. https://www.hackerrank.com/challenges/contest-leaderboard/problem?isFullScreen=true
+Ans:
+with abc as (select a.hacker_id,a.name,b.submission_id,b.challenge_id,b.score from Hackers a join Submissions b on a.hacker_id = b.hacker_id),
+
+bcd as (select hacker_id,challenge_id,max(score) as score from abc group by hacker_id,challenge_id),
+
+final as (select bcd.hacker_id,x.name,score from bcd join Hackers x on bcd.hacker_id=x.hacker_id)
+
+select hacker_id,name,sum(score) as score from final group by hacker_id,name
+having sum(score)>0
+order by sum(score) desc,hacker_id asc ;
+
+
+7. https://www.hackerrank.com/challenges/the-report/problem?isFullScreen=true
+Ans: 
+with abc as (select Name,Marks from Students),
+
+gg as (select abc.Name,grade,abc.Marks from grades join abc on abc.Marks between min_mark and max_mark),
+
+y as (select * from gg where grade>7 order by grade desc, name asc),
+
+bc as (select * from y
+union
+(select NULL as Name,grade,Marks from gg where grade<8 order by grade desc, Marks))
+
+select * from bc order by grade desc,name,marks;
+
+8. 
